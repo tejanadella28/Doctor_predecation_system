@@ -8,7 +8,7 @@
 ## 🌟 Key Features  
 
 ✅ **Interactive Symptom Input** – Users can enter symptoms easily.  
-🤖 **ML-Powered Predictions** – Uses a **Decision Tree Classifier** for accurate disease diagnosis.  
+🤖 **ML-Powered Predictions** – Uses a **Support Vector Classifier** for accurate disease diagnosis.  
 📚 **Comprehensive Health Insights** – Includes **precautions, medications, diet, and workouts**.  
 📰 **Health Blogs** – Educate users with informative health-related articles.  
 🎨 **Modern UI** – Dark-themed, gradient-based UI with smooth animations.  
