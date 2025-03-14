@@ -19,7 +19,7 @@
 
 | **Frontend** 🖥️ | **Backend** 🖥️ | **Machine Learning** 🤖 | **Database** 📂 |
 |------------------|----------------|-------------------------|-----------------|
-| HTML, CSS, Bootstrap | Flask (Python) | Scikit-learn (SVC) | CSV-based symptom-disease mapping (extendable to DB) |
+| HTML, CSS, Bootstrap ,JS | Flask (Python) | Scikit-learn (SVC) | CSV-based symptom-disease mapping (extendable to DB) |
 
 ---
 
