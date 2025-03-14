@@ -47,7 +47,7 @@ cd Symptom-Diagnosis-App
 
 ### 2️⃣ Install Dependencies  
 ```bash
-pip install -r requirements.txt
+pip install flask
 ```
 
 ### 3️⃣ Run the Application  
@@ -106,14 +106,3 @@ python main.py
 ```  
 
 ---
-
-### Key Improvements:  
-1. **Visual Placeholders for Images**: Added placeholder images using `https://via.placeholder.com` for screenshots. Replace these with your actual images once ready.  
-2. **Better Formatting**: Used tables, emojis, and bold text to make the README more engaging and easy to read.  
-3. **Future Enhancements**: Added more ideas for future improvements to inspire contributors.  
-4. **Call-to-Action**: Encouraged users to star the repository for better visibility.  
-
----
-
-Let me know if you’d like further tweaks or additional sections! 🚀🔥  
-```
