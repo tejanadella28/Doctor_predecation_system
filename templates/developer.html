@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Symptoms List</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+            transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #searchInput {
+            width: 90%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            outline: none;
+            font-size: 16px;
+            display: block;
+            margin-left: 5%;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        th:hover {
+            background-color: #0056b3;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        tr:hover {
+            background-color: #dceeff;
+        }
+        .dark-mode {
+            background-color: #222;
+            color: white;
+        }
+        .dark-mode .container {
+            background-color: #333;
+            box-shadow: none;
+        }
+        .dark-mode table {
+            background-color: #444;
+        }
+        .dark-mode th {
+            background-color: #555;
+        }
+        .toggle-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .toggle-button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .toggle-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Interactive Symptoms List</h2>
+        <div class="toggle-container">
+            <button class="toggle-button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+        </div>
+        <input type="text" id="searchInput" onkeyup="filterSymptoms()" placeholder="Search for symptoms...">
+        <table>
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">#</th>
+                    <th onclick="sortTable(1)">Symptom</th>
+                </tr>
+            </thead>
+            <tbody id="symptomTable">
+                <!-- Symptoms will be inserted here dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const symptoms = [
+            "itching", "skin rash", "nodal skin eruptions", "continuous sneezing", "shivering", "chills", "joint pain", "stomach pain", "acidity", "ulcers on tongue",
+            "muscle wasting", "vomiting", "burning micturition", "spotting urination", "fatigue", "weight gain", "anxiety", "cold hands and feet", "mood swings", "weight loss",
+            "restlessness", "lethargy", "patches in throat", "irregular sugar level", "cough", "high fever", "sunken eyes", "breathlessness", "sweating", "dehydration",
+            "indigestion", "headache", "yellowish skin", "dark urine", "nausea", "loss of appetite", "pain behind the eyes", "back pain", "constipation", "abdominal pain",
+            "diarrhoea", "mild fever", "yellow urine", "yellowing of eyes", "acute liver failure", "fluid overload", "swelling of stomach", "swelled lymph nodes", "malaise", "blurred and distorted vision"
+        ];
+
+        function populateTable() {
+            let tableBody = document.getElementById("symptomTable");
+            symptoms.forEach((symptom, index) => {
+                let row = tableBody.insertRow();
+                row.innerHTML = `<td>${index + 1}</td><td>${symptom}</td>`;
+            });
+        }
+
+        function filterSymptoms() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let rows = document.querySelectorAll("#symptomTable tr");
+
+            rows.forEach(row => {
+                let symptom = row.cells[1].textContent.toLowerCase();
+                row.style.display = symptom.includes(input) ? "" : "none";
+            });
+        }
+
+        function sortTable(columnIndex) {
+            let table = document.getElementById("symptomTable");
+            let rows = Array.from(table.rows);
+            let ascending = table.getAttribute("data-sort") !== "asc";
+
+            rows.sort((a, b) => {
+                let valA = a.cells[columnIndex].textContent;
+                let valB = b.cells[columnIndex].textContent;
+                return ascending ? valA.localeCompare(valB) : valB.localeCompare(valA);
+            });
+
+            table.innerHTML = "";
+            rows.forEach(row => table.appendChild(row));
+            table.setAttribute("data-sort", ascending ? "asc" : "desc");
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+
+        window.onload = populateTable;
+    </script>
+</body>
+</html>
