@@ -42,7 +42,7 @@
 ### 1️⃣ Clone the Repository  
 ```bash
 git clone https://github.com/tejanadell28/Doctor_predecation_system.git
-cd Symptom-Diagnosis-App
+cd Doctor_predecation_system
 ```
 
 ### 2️⃣ Install Dependencies  
@@ -104,5 +104,3 @@ python main.py
 ⭐ **If you like this project, consider giving it a star on GitHub!** ⭐  
 
 ```  
-
----
