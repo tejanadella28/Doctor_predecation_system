@@ -61,7 +61,7 @@ python main.py
 ## 📷 Screenshots  
 
 ### 🏠 Homepage  
-![Homepage](https://via.placeholder.com/800x400.png?text=Homepage+UI+with+Modern+Design)  
+![Homepage](https://github.com/tejanadella28/Doctor_predecation_system/blob/main/Screenshot%202025-03-14%20135904.png)
 
 ### 🏥 Disease Prediction  
 ![Prediction](https://via.placeholder.com/800x400.png?text=Disease+Prediction+Results+with+Details)  
