@@ -1,473 +1,290 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>HealthCenter</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
     <style>
-       body {
-    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-    font-family: 'Arial', sans-serif;
-    transition: background 0.3s ease, color 0.3s ease;
-
-    /* Ensuring full-screen coverage */
-    height: 100vh; /* Full viewport height */
-    margin: 0;
-    background-size: cover;
-    background-attachment: fixed; /* Keeps background fixed when scrolling */
-}
-html, body {
-        height: 100%;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .footer {
-        margin-top: auto;
-    }
-
-        .dark-mode {
-            background: linear-gradient(135deg, #1e1e2f, #2d2d44);
-            color: #ffffff;
-        }
-
-        .dark-mode .navbar {
-            background-color: #1a1a2e !important;
-        }
-
-        .dark-mode .form-container {
-            background: rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-        }
-
-        .dark-mode .form-control {
-            background-color: #2d2d44;
-            color: #ffffff;
-            border: 1px solid #444;
-        }
-
-        .dark-mode .modal-content {
-            background-color: #2d2d44;
-            color: #ffffff;
-        }
-
-        .dark-mode .modal-header {
-            background-color: #1a1a2e;
-            color: #ffffff;
-        }
-
-        .dark-mode .modal-body {
-            background-color: #2d2d44;
-            color: #ffffff;
-        }
-
-        .logo {
-            width: 50px;
-            height: 50px;
-            margin-top: 0;
-            margin-left: 2px;
-        }
-
-        .myimg {
-            width: 50px;
-            height: 50px;
-            border: 2px solid black;
-            border-radius: 25px;
-        }
-
-        .navbar {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar-brand {
-            font-weight: bold;
-            font-size: 1.5rem;
-        }
-
-        .form-container {
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            border-radius: 15px;
-            padding: 40px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        .form-container label {
-            font-weight: bold;
-        }
-
-        .form-control {
-            border-radius: 10px;
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
-
-        /* Alert Box Styles */
-        .alert-custom {
-            background-color: #ff6b6b;
-            color: white;
-            border-radius: 10px;
-            padding: 10px;
-            margin-top: 10px;
-            text-align: center;
-            font-weight: bold;
-            border: 1px solid #ff4757;
-        }
-
-        .dark-mode .alert-custom {
-            background-color: #ff4757;
-            border: 1px solid #ff6b6b;
-        }
-
-        /* Button Styles */
-        .btn-custom {
-            border: none;
-            border-radius: 20px;
-            padding: 10px 20px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            font-weight: bold;
-            text-align: center;
-            display: inline-block;
-            margin: 5px;
-        }
-
-        .btn-custom:hover {
-            transform: translateY(-2px);
-        }
-
-        .btn-primary {
-            background-color: #268AF3;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: #1a6bbf;
-        }
-
-        .btn-danger {
-            background-color: #F8576F;
-            color: white;
-        }
-
-        .btn-danger:hover {
-            background-color: #d9455a;
-        }
-
-        .btn-success {
-            background-color: #28a745;
-            color: white;
-        }
-
-        .btn-success:hover {
-            background-color: #218838;
-        }
-
-        .btn-warning {
-            background-color: #ffc107;
-            color: black;
-        }
-
-        .btn-warning:hover {
-            background-color: #e0a800;
-        }
-
-        .btn-info {
-            background-color: #17a2b8;
-            color: white;
-        }
-
-        .btn-info:hover {
-            background-color: #138496;
-        }
-
-        .btn-secondary {
-            background-color: #6c757d;
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background-color: #5a6268;
-        }
-
-        .result-container {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .toggle-button {
-            margin: 10px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .toggle-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .modal-content {
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .modal-header {
-            background-color: #020606;
-            color: white;
-            border-radius: 15px 15px 0 0;
-        }
-
-        .modal-body {
-            background-color: #f8f9fa;
-            color: #333;
-            border-radius: 0 0 15px 15px;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Center Speech Recognition Button */
-        .center-button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
-        }
+      .dark-mode {
+        background-color: #1a1a1a;
+        color: #e5e5e5;
+      }
+      .container-box {
+        background-color: rgba(26, 26, 26, 0.9);
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .result-card {
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+      .result-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      }
+      body {
+        background-color: #f5f5f5;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body class="flex flex-col min-h-screen">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <div class="logo">
-                <img class="myimg" src="{{ url_for('static', filename='logo.png') }}" alt="">
-            </div>
-            <a class="navbar-brand" href="#">AI Health Center</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contact">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/developer">Check Symptoms</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/blog">Blog</a>
-                    </li>
-                </ul>
-                <!-- Dark Mode Toggle Button -->
-                <button id="darkModeToggle" class="btn btn-outline-light">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </div>
+    <nav class="bg-[#2c3e50] p-4 shadow-md">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center">
+          <img
+            class="w-12 h-12 rounded-full border-2 border-gray-300"
+            src="{{ url_for('static', filename='logo.png') }}"
+            alt="Logo"
+          />
+          <a
+            class="text-white text-xl font-semibold ml-3 tracking-wide"
+            href="#"
+            >AI Health Center</a
+          >
         </div>
+        <button
+          id="darkModeToggle"
+          class="text-white px-4 py-2 rounded-lg transition hover:bg-[#34495e]"
+        >
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
     </nav>
 
     <!-- Main Form -->
-    <h1 class="mt-4 my-4 text-center animate__animated animate__fadeIn animate__slow"
-        style="color:#3f4dcc; font-weight: bold; font-size: 2.8rem; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);">
-        Health Care Center
+    <h1
+      class="mt-6 text-center text-4xl font-bold text-[#2c3e50] tracking-wide"
+    >
+      Health Care Center
     </h1>
-    <div class="container my-4 mt-4 form-container">
-        <form action="/predict" method="post">
-            <div class="form-group">
-                <label for="symptoms" style="color:#1fcc8a"><h3>Select Symptoms:</h3></label>
-                <input type="text" class="form-control" id="symptoms" name="symptoms" placeholder="Type symptoms such as itching, sleeping, aching, etc.">
-            </div>
-            <div name="mysysms" id="transcription" class="mt-3"></div>
-            {% if message %}
-            <div class="alert-custom">
-                {{ message }}
-            </div>
-            {% endif %}
-            <br>
-            <!-- Predict Button -->
-            <button type="submit" class="btn btn-custom btn-danger btn-lg" style="width: 100%; padding: 14px; margin-bottom: 5px;">Predict</button>
-        </form>
+    <div
+      class="container mx-auto mt-6 p-6 container-box text-white w-11/12 md:w-1/2"
+    >
+      <form action="/predict" method="post">
+        <label class="block text-lg font-semibold text-[#3498db] mb-2"
+          >Select Symptoms:</label
+        >
+        <input
+          type="text"
+          name="symptoms"
+          class="w-full p-3 rounded-lg border border-gray-300 bg-[#34495e] text-white focus:border-[#3498db]"
+          placeholder="Type symptoms such as itching, sleeping, aching..."
+        />
+        <div name="mysysms" id="transcription" class="mt-3"></div>
+        {% if message %}
+        <div
+          class="mt-4 bg-[#c0392b] text-white p-3 rounded-md text-center font-semibold"
+        >
+          {{ message }}
+        </div>
+        {% endif %}
+        <button
+          type="submit"
+          class="w-full mt-4 p-3 bg-[#3498db] text-white font-bold rounded-lg hover:bg-[#2980b9] transition"
+        >
+          Predict
+        </button>
+      </form>
     </div>
 
     <!-- Results Section -->
     {% if predicted_disease %}
-    <h1 class="text-center my-4 mt-4 animate__animated animate__fadeIn">Our AI System Results</h1>
-    <div class="container result-container">
-        <button class="toggle-button btn btn-custom btn-primary" data-bs-toggle="modal" data-bs-target="#diseaseModal">Disease</button>
-        <button class="toggle-button btn btn-custom btn-info" data-bs-toggle="modal" data-bs-target="#descriptionModal">Description</button>
-        <button class="toggle-button btn btn-custom btn-warning" data-bs-toggle="modal" data-bs-target="#precautionModal">Precaution</button>
-        <button class="toggle-button btn btn-custom btn-danger" data-bs-toggle="modal" data-bs-target="#medicationsModal">Medications</button>
-        <button class="toggle-button btn btn-custom btn-success" data-bs-toggle="modal" data-bs-target="#workoutsModal">Workouts</button>
-        <button class="toggle-button btn btn-custom btn-secondary" data-bs-toggle="modal" data-bs-target="#dietsModal">Diets</button>
+    <h1 class="text-center my-6 text-3xl font-semibold text-[#2c3e50]">
+      Our AI System Results
+    </h1>
+    <div class="container mx-auto px-4 mb-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Disease Card -->
+        <div
+          class="result-card bg-[#3498db] text-white rounded-lg shadow-md p-6 flex flex-col items-center justify-center"
+          data-modal="diseaseModal"
+        >
+          <i class="fas fa-virus text-3xl mb-2"></i>
+          <h3 class="text-xl font-bold">Disease</h3>
+          <p class="text-sm mt-2 text-center">
+            Click to view diagnosed disease
+          </p>
+        </div>
+
+        <!-- Description Card -->
+        <div
+          class="result-card bg-[#16a085] text-white rounded-lg shadow-md p-6 flex flex-col items-center justify-center"
+          data-modal="descriptionModal"
+        >
+          <i class="fas fa-info-circle text-3xl mb-2"></i>
+          <h3 class="text-xl font-bold">Description</h3>
+          <p class="text-sm mt-2 text-center">
+            Click to learn about the condition
+          </p>
+        </div>
+
+        <!-- Precaution Card -->
+        <div
+          class="result-card bg-[#f39c12] text-white rounded-lg shadow-md p-6 flex flex-col items-center justify-center"
+          data-modal="precautionModal"
+        >
+          <i class="fas fa-shield-alt text-3xl mb-2"></i>
+          <h3 class="text-xl font-bold">Precaution</h3>
+          <p class="text-sm mt-2 text-center">
+            Click to view recommended precautions
+          </p>
+        </div>
+
+        <!-- Medications Card -->
+        <div
+          class="result-card bg-[#e74c3c] text-white rounded-lg shadow-md p-6 flex flex-col items-center justify-center"
+          data-modal="medicationsModal"
+        >
+          <i class="fas fa-pills text-3xl mb-2"></i>
+          <h3 class="text-xl font-bold">Medications</h3>
+          <p class="text-sm mt-2 text-center">
+            Click to view suggested medications
+          </p>
+        </div>
+
+        <!-- Workouts Card -->
+        <div
+          class="result-card bg-[#27ae60] text-white rounded-lg shadow-md p-6 flex flex-col items-center justify-center"
+          data-modal="workoutsModal"
+        >
+          <i class="fas fa-dumbbell text-3xl mb-2"></i>
+          <h3 class="text-xl font-bold">Workouts</h3>
+          <p class="text-sm mt-2 text-center">
+            Click to view recommended exercises
+          </p>
+        </div>
+
+        <!-- Diets Card -->
+        <div
+          class="result-card bg-[#8e44ad] text-white rounded-lg shadow-md p-6 flex flex-col items-center justify-center"
+          data-modal="dietsModal"
+        >
+          <i class="fas fa-utensils text-3xl mb-2"></i>
+          <h3 class="text-xl font-bold">Diets</h3>
+          <p class="text-sm mt-2 text-center">
+            Click to view dietary recommendations
+          </p>
+        </div>
+      </div>
     </div>
     {% endif %}
 
     <!-- Modals -->
-    <div class="modal fade" id="diseaseModal" tabindex="-1" aria-labelledby="diseaseModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="diseaseModalLabel">Predicted Disease</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>{{ predicted_disease }}</p>
-                </div>
-            </div>
+    <div
+      id="modals"
+      class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+    >
+      <div
+        class="bg-white dark:bg-[#2c3e50] p-6 rounded-lg shadow-lg w-11/12 md:w-2/3 lg:w-1/2 max-h-[80vh] overflow-y-auto"
+      >
+        <div class="flex justify-between items-center border-b pb-3">
+          <h2
+            id="modalTitle"
+            class="text-2xl font-bold text-[#2c3e50] dark:text-white"
+          ></h2>
+          <button
+            class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white text-xl"
+            onclick="closeModal()"
+          >
+            <i class="fas fa-times"></i>
+          </button>
         </div>
+        <div
+          id="modalContent"
+          class="mt-4 text-[#2c3e50] dark:text-white"
+        ></div>
+        <div class="mt-6 text-right">
+          <button
+            class="px-4 py-2 bg-[#34495e] text-white rounded-md hover:bg-[#2c3e50] transition"
+            onclick="closeModal()"
+          >
+            Close
+          </button>
+        </div>
+      </div>
     </div>
 
-    <div class="modal fade" id="descriptionModal" tabindex="-1" aria-labelledby="descriptionModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="descriptionModalLabel">Description</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>{{ dis_des }}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="precautionModal" tabindex="-1" aria-labelledby="precautionModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="precautionModalLabel">Precaution</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <ul>
-                        {% for i in my_precautions %}
-                            <li>{{ i }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="medicationsModal" tabindex="-1" aria-labelledby="medicationsModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="medicationsModalLabel">Medications</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <ul>
-                        {% for i in medications %}
-                            <li>{{ i }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="workoutsModal" tabindex="-1" aria-labelledby="workoutsModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="workoutsModalLabel">Workouts</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <ul>
-                        {% for i in workout %}
-                            <li>{{ i }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="dietsModal" tabindex="-1" aria-labelledby="dietsModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="dietsModalLabel">Diets</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <ul>
-                        {% for i in my_diet %}
-                            <li>{{ i }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script>
-        $(document).ready(function () {
-            // Dark Mode Toggle
-            const darkModeToggle = document.getElementById('darkModeToggle');
-            const body = document.body;
-
-            darkModeToggle.addEventListener('click', () => {
-                body.classList.toggle('dark-mode');
-                if (body.classList.contains('dark-mode')) {
-                    darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-                } else {
-                    darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-                }
-            });
-
-            // Speech Recognition
-            const startSpeechRecognitionButton = document.getElementById('startSpeechRecognition');
-            const transcriptionDiv = document.getElementById('transcription');
-
-            if (startSpeechRecognitionButton) {
-                startSpeechRecognitionButton.addEventListener('click', startSpeechRecognition);
-            }
-
-            function startSpeechRecognition() {
-                const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-                recognition.lang = 'en-US';
-                recognition.onresult = function (event) {
-                    const result = event.results[0][0].transcript;
-                    transcriptionDiv.textContent = result;
-                };
-                recognition.start();
-            }
+      // Dark Mode Toggle
+      document
+        .getElementById("darkModeToggle")
+        .addEventListener("click", function () {
+          document.body.classList.toggle("dark-mode");
+          this.innerHTML = document.body.classList.contains("dark-mode")
+            ? '<i class="fas fa-sun"></i>'
+            : '<i class="fas fa-moon"></i>';
         });
-           document.addEventListener("DOMContentLoaded", function () {
-        let flashMessages = {{ get_flashed_messages(with_categories=True) | tojson }};
 
-        if (flashMessages) {
-            let errorMessages = flashMessages.filter(msg => msg[0] === "error").map(msg => msg[1]);
+      // Modal System
+      document.querySelectorAll("[data-modal]").forEach((card) => {
+        card.addEventListener("click", function () {
+          const modal = document.getElementById("modals");
+          const modalType = card.getAttribute("data-modal");
+          const title = card.querySelector("h3").innerText;
+          let content = "";
 
-            if (errorMessages.length > 0) {
-                alert(errorMessages.join("\n")); // Show all error messages in an alert
-            }
+          switch (modalType) {
+            case "diseaseModal":
+              content = "{{ predicted_disease }}";
+              break;
+            case "descriptionModal":
+              content = "{{ dis_des }}";
+              break;
+            case "precautionModal":
+              content =
+                "<ul class='list-disc pl-5 space-y-2'>{% for i in my_precautions %}<li>{{ i }}</li>{% endfor %}</ul>";
+              break;
+            case "medicationsModal":
+              content =
+                "<ul class='list-disc pl-5 space-y-2'>{% for i in medications %}<li>{{ i }}</li>{% endfor %}</ul>";
+              break;
+            case "workoutsModal":
+              content =
+                "<ul class='list-disc pl-5 space-y-2'>{% for i in workout %}<li>{{ i }}</li>{% endfor %}</ul>";
+              break;
+            case "dietsModal":
+              content =
+                "<ul class='list-disc pl-5 space-y-2'>{% for i in my_diet %}<li>{{ i }}</li>{% endfor %}</ul>";
+              break;
+          }
+
+          document.getElementById("modalTitle").innerText = title;
+          document.getElementById("modalContent").innerHTML = content;
+          modal.classList.remove("hidden");
+        });
+      });
+
+      function closeModal() {
+        document.getElementById("modals").classList.add("hidden");
+      }
+
+      // Close modal when clicking outside
+      document.getElementById("modals").addEventListener("click", function (e) {
+        if (e.target === this) {
+          closeModal();
         }
-    });
+      });
+
+      // Close modal with Escape key
+      document.addEventListener("keydown", function (e) {
+        if (
+          e.key === "Escape" &&
+          !document.getElementById("modals").classList.contains("hidden")
+        ) {
+          closeModal();
+        }
+      });
     </script>
-<marquee behavior="scroll" direction="left" style=" color:#e64b09; padding: 10px; font-weight: bold;">
-   If you see the message "Invalid symptom in search", please check the "Check Symptoms" option.
-</marquee>
-<footer class="footer bg-dark text-white text-center py-3 mt-auto">
-    <div class="container">
-        <p class="mb-0">&copy; 2025 Nadella Teja. All rights reserved.</p>
-    </div>
-</footer>
-</body>
+
+    <footer class="bg-[#2c3e50] text-white text-center py-4 mt-auto">
+      <p>&copy; 2025 Nadella Teja. All rights reserved.</p>
+    </footer>
+  </body>
 </html>
