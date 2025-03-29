@@ -1,113 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Medical Health Center 🚀</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - AI Health Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
     <style>
-        /* Global Styling */
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            color: white;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
-        /* Container Styling */
-        .container {
-            max-width: 700px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            transition: 0.3s;
-        }
+      :root {
+        --light-bg: #fdf6ec;
+        --light-primary: #f4a261;
+        --light-secondary: #2a9d8f;
+        --light-heading: #264653;
+        --light-text: #3d405b;
+        --light-button: #e76f51;
 
-        .container:hover {
-            transform: scale(1.02);
-            box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.5);
-        }
+        --dark-bg: #1b1d2b;
+        --dark-primary: #e9c46a;
+        --dark-secondary: #2a9d8f;
+        --dark-heading: #f4f4f4;
+        --dark-text: #b5b5c3;
+        --dark-button: #e76f51;
+      }
 
-        h3 {
-            color: #00c6ff;
-            border-bottom: 2px solid #00c6ff;
-            padding-bottom: 5px;
-            margin-top: 20px;
-        }
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: var(--light-bg);
+        color: var(--light-text);
+        transition: all 0.3s ease;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
 
-        p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #ddd;
-        }
+      body.dark-mode {
+        background-color: var(--dark-bg);
+        color: var(--dark-text);
+      }
 
-        /* Footer Styling */
-        .footer {
-            margin-top: 30px;
-            padding: 10px;
-            font-size: 14px;
-            color: white;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-        }
+      .content-box {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 1.5rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
 
-        /* Glowing Button */
-        .btn-glow {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 12px 20px;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: bold;
-            text-decoration: none;
-            background: linear-gradient(45deg, #ff416c, #ff4b2b);
-            color: white;
-            box-shadow: 0px 5px 15px rgba(255, 65, 108, 0.3);
-            transition: 0.3s;
-        }
+      .dark-mode .content-box {
+        background: rgba(27, 29, 43, 0.8);
+      }
 
-        .btn-glow:hover {
-            transform: scale(1.1);
-            box-shadow: 0px 5px 20px rgba(255, 65, 108, 0.5);
-        }
+      .content-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      }
 
+      .section-heading {
+        color: var(--light-secondary);
+        border-bottom: 2px solid var(--light-secondary);
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      .dark-mode .section-heading {
+        color: var(--dark-primary);
+        border-bottom-color: var(--dark-primary);
+      }
+
+      .highlight {
+        color: var(--light-primary);
+        font-weight: 500;
+      }
+
+      .dark-mode .highlight {
+        color: var(--dark-primary);
+      }
     </style>
-</head>
-<body>
-    <div class="container">
-        <h3>About Us ✨</h3>
-        <p>Welcome to <b>Medical Health Center</b>, where health meets technology for a brighter, healthier future.</p>
-
-        <h3>🌍 Our Vision</h3>
-        <p>We envision a world where healthcare information is a **fundamental right** for everyone. We aim to empower individuals with **knowledge & tools** to take control of their health.</p>
-
-        <h3>🚀 Who We Are</h3>
-      <p>I am Data science and machine learning student for GFG and an B-tech student in Information Technology</p>
-        <h3>🎯 Our Mission</h3>
-        <p>At <b>Medical Health Center</b>, we provide a **seamless, AI-powered platform** that helps people make **informed health decisions**.</p>
-
-        <h3>🛠️ How We Do It</h3>
-        <p>We use a **machine learning model** trained on a vast dataset of symptoms & diseases. Input your symptoms, and our system predicts **potential illnesses** instantly.</p>
-
-        <h3>💙 Your Well-being, Our Priority</h3>
-        <p>Your health is our **top priority**. We provide **detailed disease insights, precautions, medications & lifestyle recommendations** to ensure your well-being.</p>
-
-        <h3>🤝 Join Us on this Journey</h3>
-        <p>Explore our platform, learn from our content, and take charge of your **health journey** today! 🚀</p>
-
-        <div class="footer">
-            &copy; 2025 Nadella Teja All Rights Reserved. 🔥
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="bg-gradient-to-r from-[#264653] to-[#2A9D8F] p-4 shadow-lg">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+          <i class="fas fa-heartbeat text-3xl text-[#F4A261]"></i>
+          <a class="text-2xl font-semibold tracking-wide text-white" href="/"
+            >AI Health Center</a
+          >
         </div>
-    </div>
+        <div class="flex items-center space-x-6">
+          <a href="/" class="text-white hover:text-[#F4A261] transition"
+            >Home</a
+          >
+          <a href="/about" class="text-white hover:text-[#F4A261] transition"
+            >About</a
+          >
+          <a href="/contact" class="text-white hover:text-[#F4A261] transition"
+            >Contact</a
+          >
+          <a
+            href="/developer"
+            class="text-white hover:text-[#F4A261] transition"
+            >Check Symptoms</a
+          >
+          <a href="/blog" class="text-white hover:text-[#F4A261] transition"
+            >Blog</a
+          >
+          <button
+            id="darkModeToggle"
+            class="text-white p-2 rounded-full hover:bg-opacity-20 hover:bg-white transition"
+          >
+            <i class="fas fa-moon"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12 flex-grow">
+      <div class="content-box max-w-3xl mx-auto p-8">
+        <h1 class="text-4xl font-bold text-center mb-8 text-[#2A9D8F]">
+          About Us <span class="text-[#F4A261]">✨</span>
+        </h1>
+
+        <div class="space-y-8">
+          <div>
+            <h2 class="section-heading text-2xl">Welcome</h2>
+            <p class="text-lg">
+              Welcome to <span class="highlight">AI Health Center</span>, where
+              health meets technology for a brighter, healthier future.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="section-heading text-2xl">🌍 Our Vision</h2>
+            <p class="text-lg">
+              We envision a world where healthcare information is a
+              <span class="highlight">fundamental right</span> for everyone. We
+              aim to empower individuals with
+              <span class="highlight">knowledge & tools</span> to take control
+              of their health.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="section-heading text-2xl">🚀 Who We Are</h2>
+            <p class="text-lg">
+              I am a Data Science and Machine Learning student for GFG and a
+              B-Tech student in Information Technology.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="section-heading text-2xl">🎯 Our Mission</h2>
+            <p class="text-lg">
+              At <span class="highlight">AI Health Center</span>, we provide a
+              <span class="highlight">seamless, AI-powered platform</span> that
+              helps people make
+              <span class="highlight">informed health decisions</span>.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="section-heading text-2xl">🛠️ How We Do It</h2>
+            <p class="text-lg">
+              We use a
+              <span class="highlight">machine learning model</span> trained on a
+              vast dataset of symptoms & diseases. Input your symptoms, and our
+              system predicts
+              <span class="highlight">potential illnesses</span> instantly.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="section-heading text-2xl">
+              💙 Your Well-being, Our Priority
+            </h2>
+            <p class="text-lg">
+              Your health is our <span class="highlight">top priority</span>. We
+              provide
+              <span class="highlight"
+                >detailed disease insights, precautions, medications & lifestyle
+                recommendations</span
+              >
+              to ensure your well-being.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="section-heading text-2xl">🤝 Join Us on this Journey</h2>
+            <p class="text-lg">
+              Explore our platform, learn from our content, and take charge of
+              your
+              <span class="highlight">health journey</span> today! 🚀
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="bg-gradient-to-r from-[#264653] to-[#2A9D8F] text-white mt-auto py-6"
+    >
+      <div class="container mx-auto px-4 text-center">
+        <p>&copy; 2025 AI Health Center. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      // Dark Mode Toggle
+      const darkModeToggle = document.getElementById("darkModeToggle");
+      darkModeToggle.addEventListener("click", function () {
+        document.body.classList.toggle("dark-mode");
+        this.innerHTML = document.body.classList.contains("dark-mode")
+          ? '<i class="fas fa-sun"></i>'
+          : '<i class="fas fa-moon"></i>';
+      });
+    </script>
+  </body>
 </html>
