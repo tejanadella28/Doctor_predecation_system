@@ -1,171 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Symptoms List</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Symptoms List - AI Health Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-            color: #333;
-            transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        #searchInput {
-            width: 90%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 2px solid #007bff;
-            border-radius: 5px;
-            outline: none;
-            font-size: 16px;
-            display: block;
-            margin-left: 5%;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        th, td {
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #007bff;
-            color: white;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        th:hover {
-            background-color: #0056b3;
-        }
-        tr:nth-child(even) {
-            background-color: #f8f9fa;
-        }
-        tr:hover {
-            background-color: #dceeff;
-        }
-        .dark-mode {
-            background-color: #222;
-            color: white;
-        }
-        .dark-mode .container {
-            background-color: #333;
-            box-shadow: none;
-        }
-        .dark-mode table {
-            background-color: #444;
-        }
-        .dark-mode th {
-            background-color: #555;
-        }
-        .toggle-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        .toggle-button {
-            padding: 10px 15px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: bold;
-        }
-        .toggle-button:hover {
-            background-color: #0056b3;
-        }
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+      :root {
+        --light-bg: #fdf6ec;
+        --light-primary: #f4a261;
+        --light-secondary: #2a9d8f;
+        --light-heading: #264653;
+        --light-text: #3d405b;
+        --light-button: #e76f51;
+
+        --dark-bg: #1b1d2b;
+        --dark-primary: #e9c46a;
+        --dark-secondary: #2a9d8f;
+        --dark-heading: #f4f4f4;
+        --dark-text: #b5b5c3;
+        --dark-button: #e76f51;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--light-bg);
+        color: var(--light-text);
+        transition: all 0.3s ease;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      body.dark-mode {
+        background-color: var(--dark-bg);
+        color: var(--dark-text);
+      }
+
+      nav {
+        background: linear-gradient(
+          to right,
+          var(--light-heading),
+          var(--light-secondary)
+        );
+      }
+
+      .dark-mode nav {
+        background: linear-gradient(
+          to right,
+          var(--dark-bg),
+          var(--dark-secondary)
+        );
+      }
+
+      .container-box {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 1rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      }
+
+      .dark-mode .container-box {
+        background: rgba(27, 29, 43, 0.8);
+      }
+
+      h2 {
+        color: var(--light-primary);
+        font-weight: 700;
+      }
+
+      .dark-mode h2 {
+        color: var(--dark-primary);
+      }
+
+      #searchInput {
+        width: 90%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 2px solid var(--light-secondary);
+        border-radius: 5px;
+        outline: none;
+        font-size: 16px;
+        display: block;
+        margin-left: 5%;
+        background-color: var(--light-bg);
+        color: var(--light-text);
+        transition: all 0.3s ease;
+      }
+
+      .dark-mode #searchInput {
+        background-color: var(--dark-bg);
+        color: var(--dark-text);
+        border-color: var(--dark-secondary);
+      }
+
+      #searchInput:focus {
+        box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.3);
+        transform: translateY(-2px);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .dark-mode table {
+        background: rgba(27, 29, 43, 0.8);
+      }
+
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+      }
+
+      th {
+        background-color: var(--light-secondary);
+        color: white;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: background-color 0.3s ease;
+      }
+
+      .dark-mode th {
+        background-color: var(--dark-secondary);
+      }
+
+      th:hover {
+        background-color: #1f7a6d; /* Darker shade of secondary */
+      }
+
+      tr:nth-child(even) {
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+
+      tr:hover {
+        background-color: rgba(42, 157, 143, 0.2);
+      }
+
+      .toggle-button {
+        padding: 10px 15px;
+        background-color: var(--light-button);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .dark-mode .toggle-button {
+        background-color: var(--dark-button);
+      }
+
+      .toggle-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(231, 111, 81, 0.3);
+      }
+
+      footer {
+        background: linear-gradient(
+          to right,
+          var(--light-heading),
+          var(--light-secondary)
+        );
+        color: white;
+      }
+
+      .dark-mode footer {
+        background: linear-gradient(
+          to right,
+          var(--dark-bg),
+          var(--dark-secondary)
+        );
+      }
     </style>
-</head>
-<body>
-    <div class="container">
-        <h2>Interactive Symptoms List</h2>
-        <div class="toggle-container">
-            <button class="toggle-button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="p-4 shadow-lg">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+          <i
+            class="fas fa-heartbeat text-3xl text-[var(--light-primary)] dark:text-[var(--dark-primary)]"
+          ></i>
+          <a class="text-2xl font-semibold tracking-wide text-white" href="/"
+            >AI Health Center</a
+          >
         </div>
-        <input type="text" id="searchInput" onkeyup="filterSymptoms()" placeholder="Search for symptoms...">
+        <div class="flex items-center space-x-6">
+          <a
+            href="/"
+            class="text-white hover:text-[var(--light-primary)] transition"
+            >Home</a
+          >
+          <a
+            href="/about"
+            class="text-white hover:text-[var(--light-primary)] transition"
+            >About</a
+          >
+          <a
+            href="/contact"
+            class="text-white hover:text-[var(--light-primary)] transition"
+            >Contact</a
+          >
+          <a
+            href="/developer"
+            class="text-white hover:text-[var(--light-primary)] transition"
+            >Check Symptoms</a
+          >
+          <a
+            href="/blog"
+            class="text-white hover:text-[var(--light-primary)] transition"
+            >Blog</a
+          >
+          <button
+            id="darkModeToggle"
+            class="text-white p-2 rounded-full hover:bg-opacity-20 hover:bg-white transition"
+          >
+            <i class="fas fa-moon"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container px-4 py-8 flex flex-col flex-grow">
+      <div class="container-box max-w-4xl p-6">
+        <h2 class="text-center mb-6">Interactive Symptoms List</h2>
+        <input
+          type="text"
+          id="searchInput"
+          onkeyup="filterSymptoms()"
+          placeholder="Search for symptoms..."
+        />
         <table>
-            <thead>
-                <tr>
-                    <th onclick="sortTable(0)">#</th>
-                    <th onclick="sortTable(1)">Symptom</th>
-                </tr>
-            </thead>
-            <tbody id="symptomTable">
-                <!-- Symptoms will be inserted here dynamically -->
-            </tbody>
+          <thead>
+            <tr>
+              <th onclick="sortTable(0)">#</th>
+              <th onclick="sortTable(1)">Symptom</th>
+            </tr>
+          </thead>
+          <tbody id="symptomTable">
+            <!-- Symptoms will be inserted here dynamically -->
+          </tbody>
         </table>
-    </div>
+      </div>
+    </main>
 
+    <!-- Footer -->
+    <footer class="py-6 mt-auto">
+      <div class="container mx-auto px-4 text-center">
+        <p>© 2025 AI Health Center. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
     <script>
-        const symptoms = [
-            "itching", "skin rash", "nodal skin eruptions", "continuous sneezing", "shivering", "chills", "joint pain", "stomach pain", "acidity", "ulcers on tongue",
-            "muscle wasting", "vomiting", "burning micturition", "spotting urination", "fatigue", "weight gain", "anxiety", "cold hands and feet", "mood swings", "weight loss",
-            "restlessness", "lethargy", "patches in throat", "irregular sugar level", "cough", "high fever", "sunken eyes", "breathlessness", "sweating", "dehydration",
-            "indigestion", "headache", "yellowish skin", "dark urine", "nausea", "loss of appetite", "pain behind the eyes", "back pain", "constipation", "abdominal pain",
-            "diarrhoea", "mild fever", "yellow urine", "yellowing of eyes", "acute liver failure", "fluid overload", "swelling of stomach", "swelled lymph nodes", "malaise", "blurred and distorted vision"
-        ];
+      const symptoms = [
+        "itching",
+        "skin rash",
+        "nodal skin eruptions",
+        "continuous sneezing",
+        "shivering",
+        "chills",
+        "joint pain",
+        "stomach pain",
+        "acidity",
+        "ulcers on tongue",
+        "muscle wasting",
+        "vomiting",
+        "burning micturition",
+        "spotting urination",
+        "fatigue",
+        "weight gain",
+        "anxiety",
+        "cold hands and feet",
+        "mood swings",
+        "weight loss",
+        "restlessness",
+        "lethargy",
+        "patches in throat",
+        "irregular sugar level",
+        "cough",
+        "high fever",
+        "sunken eyes",
+        "breathlessness",
+        "sweating",
+        "dehydration",
+        "indigestion",
+        "headache",
+        "yellowish skin",
+        "dark urine",
+        "nausea",
+        "loss of appetite",
+        "pain behind the eyes",
+        "back pain",
+        "constipation",
+        "abdominal pain",
+        "diarrhoea",
+        "mild fever",
+        "yellow urine",
+        "yellowing of eyes",
+        "acute liver failure",
+        "fluid overload",
+        "swelling of stomach",
+        "swelled lymph nodes",
+        "malaise",
+        "blurred and distorted vision",
+      ];
 
-        function populateTable() {
-            let tableBody = document.getElementById("symptomTable");
-            symptoms.forEach((symptom, index) => {
-                let row = tableBody.insertRow();
-                row.innerHTML = `<td>${index + 1}</td><td>${symptom}</td>`;
-            });
-        }
+      function populateTable() {
+        let tableBody = document.getElementById("symptomTable");
+        symptoms.forEach((symptom, index) => {
+          let row = tableBody.insertRow();
+          row.innerHTML = `<td>${index + 1}</td><td>${symptom}</td>`;
+        });
+      }
 
-        function filterSymptoms() {
-            let input = document.getElementById("searchInput").value.toLowerCase();
-            let rows = document.querySelectorAll("#symptomTable tr");
+      function filterSymptoms() {
+        let input = document.getElementById("searchInput").value.toLowerCase();
+        let rows = document.querySelectorAll("#symptomTable tr");
+        rows.forEach((row) => {
+          let symptom = row.cells[1].textContent.toLowerCase();
+          row.style.display = symptom.includes(input) ? "" : "none";
+        });
+      }
 
-            rows.forEach(row => {
-                let symptom = row.cells[1].textContent.toLowerCase();
-                row.style.display = symptom.includes(input) ? "" : "none";
-            });
-        }
+      function sortTable(columnIndex) {
+        let table = document.getElementById("symptomTable");
+        let rows = Array.from(table.rows);
+        let ascending = table.getAttribute("data-sort") !== "asc";
+        rows.sort((a, b) => {
+          let valA = a.cells[columnIndex].textContent;
+          let valB = b.cells[columnIndex].textContent;
+          return ascending
+            ? valA.localeCompare(valB)
+            : valB.localeCompare(valA);
+        });
+        table.innerHTML = "";
+        rows.forEach((row) => table.appendChild(row));
+        table.setAttribute("data-sort", ascending ? "asc" : "desc");
+      }
 
-        function sortTable(columnIndex) {
-            let table = document.getElementById("symptomTable");
-            let rows = Array.from(table.rows);
-            let ascending = table.getAttribute("data-sort") !== "asc";
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+      }
 
-            rows.sort((a, b) => {
-                let valA = a.cells[columnIndex].textContent;
-                let valB = b.cells[columnIndex].textContent;
-                return ascending ? valA.localeCompare(valB) : valB.localeCompare(valA);
-            });
+      const darkModeToggle = document.getElementById("darkModeToggle");
+      darkModeToggle.addEventListener("click", function () {
+        document.body.classList.toggle("dark-mode");
+        this.innerHTML = document.body.classList.contains("dark-mode")
+          ? '<i class="fas fa-sun"></i>'
+          : '<i class="fas fa-moon"></i>';
+      });
 
-            table.innerHTML = "";
-            rows.forEach(row => table.appendChild(row));
-            table.setAttribute("data-sort", ascending ? "asc" : "desc");
-        }
-
-        function toggleDarkMode() {
-            document.body.classList.toggle("dark-mode");
-        }
-
-        window.onload = populateTable;
+      window.onload = populateTable;
     </script>
-</body>
+  </body>
 </html>

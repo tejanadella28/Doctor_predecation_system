@@ -1,137 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Me 🚀</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Me - AI Health Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
     <style>
-        /* Global Styles */
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            color: white;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
-        /* Container Styling */
-        .container {
-            max-width: 500px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            transition: 0.3s;
-        }
+      :root {
+        --light-bg: #fdf6ec;
+        --light-primary: #f4a261;
+        --light-secondary: #2a9d8f;
+        --light-heading: #264653;
+        --light-text: #3d405b;
+        --light-button: #e76f51;
 
-        .container:hover {
-            transform: scale(1.05);
-            box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.5);
-        }
+        --dark-bg: #1b1d2b;
+        --dark-primary: #e9c46a;
+        --dark-secondary: #2a9d8f;
+        --dark-heading: #f4f4f4;
+        --dark-text: #b5b5c3;
+        --dark-button: #e76f51;
+      }
 
-        h2 {
-            margin-bottom: 15px;
-            font-size: 30px;
-            color: #00c6ff;
-        }
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--light-bg);
+        color: var(--light-text);
+        transition: all 0.3s ease;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
 
-        .contact-info {
-            list-style: none;
-            padding: 0;
-        }
+      body.dark-mode {
+        background-color: var(--dark-bg);
+        color: var(--dark-text);
+      }
 
-        .contact-info li {
-            margin: 15px 0;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
+      nav {
+        background: linear-gradient(
+          to right,
+          var(--light-heading),
+          var(--light-secondary)
+        );
+      }
 
-        .contact-info a {
-            text-decoration: none;
-            color: #00c6ff;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+      .dark-mode nav {
+        background: linear-gradient(
+          to right,
+          var(--dark-bg),
+          var(--dark-secondary)
+        );
+      }
 
-        .contact-info a:hover {
-            color: #ff416c;
-            text-shadow: 0px 0px 10px #ff416c;
-        }
+      .container-box {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 1rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
 
-        /* Icons and Emojis */
-        .icon {
-            font-size: 22px;
-            color: #00c6ff;
-            transition: 0.3s;
-        }
+      .dark-mode .container-box {
+        background: rgba(27, 29, 43, 0.8);
+      }
 
-        .contact-info li:hover .icon {
-            color: #ff416c;
-            transform: scale(1.2);
-        }
+      .container-box:hover {
+        transform: scale(1.05);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+      }
 
-        /* Glowing Buttons */
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 20px;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: bold;
-            text-decoration: none;
-            text-transform: uppercase;
-            background: linear-gradient(45deg, #ff416c, #ff4b2b);
-            color: white;
-            box-shadow: 0px 5px 15px rgba(255, 65, 108, 0.3);
-            transition: 0.3s;
-        }
+      .contact-info {
+        list-style: none;
+        padding: 0;
+      }
 
-        .btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0px 5px 20px rgba(255, 65, 108, 0.5);
-        }
+      .contact-info li {
+        margin: 15px 0;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        transition: all 0.3s ease;
+      }
 
-        /* Footer Styling */
-        .footer {
-            margin-top: 40px;
-            padding: 10px;
-            font-size: 14px;
-            color: white;
-            background: rgba(255, 255, 255, 0.2);
-            width: 100%;
-            position: absolute;
-            bottom: 0;
-        }
+      .contact-info a {
+        text-decoration: none;
+        color: var(--light-primary);
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .dark-mode .contact-info a {
+        color: var(--dark-primary);
+      }
+
+      .contact-info a:hover {
+        color: var(--light-button);
+        text-shadow: 0 0 10px rgba(231, 111, 81, 0.3);
+      }
+
+      .icon {
+        font-size: 22px;
+        color: var(--light-secondary);
+        transition: all 0.3s ease;
+      }
+
+      .dark-mode .icon {
+        color: var(--dark-secondary);
+      }
+
+      .contact-info li:hover .icon {
+        color: var(--light-button);
+        transform: scale(1.2);
+      }
+
+      .btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 12px 20px;
+        border-radius: 50px;
+        font-size: 18px;
+        font-weight: 600;
+        text-decoration: none;
+        text-transform: uppercase;
+        background-color: var(--light-button);
+        color: white;
+        box-shadow: 0 5px 15px rgba(231, 111, 81, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .dark-mode .btn {
+        background-color: var(--dark-button);
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(231, 111, 81, 0.5);
+      }
+
+      footer {
+        background: linear-gradient(
+          to right,
+          var(--light-heading),
+          var(--light-secondary)
+        );
+        color: white;
+      }
+
+      .dark-mode footer {
+        background: linear-gradient(
+          to right,
+          var(--dark-bg),
+          var(--dark-secondary)
+        );
+      }
     </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="p-4 shadow-lg">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+          <i
+            class="fas fa-heartbeat text-3xl text-[var(--light-primary)] dark:text-[var(--dark-primary)]"
+          ></i>
+          <a class="text-2xl font-semibold tracking-wide text-white" href="/"
+            >AI Health Center</a
+          >
+        </div>
+        <div class="flex items-center space-x-6">
+          <a
+            href="/"
+            class="text-white hover:text-[var(--light-primary)] transition"
+            >Home</a
+          >
+          <a
+            href="/about"
+            class="text-white hover:text-[var(--light-primary)] transition"
+            >About</a
+          >
+          <a
+            href="/contact"
+            class="text-white hover:text-[var(--light-primary)] transition"
+            >Contact</a
+          >
+          <a
+            href="/developer"
+            class="text-white hover:text-[var(--light-primary)] transition"
+            >Check Symptoms</a
+          >
+          <a
+            href="/blog"
+            class="text-white hover:text-[var(--light-primary)] transition"
+            >Blog</a
+          >
+          <button
+            id="darkModeToggle"
+            class="text-white p-2 rounded-full hover:bg-opacity-20 hover:bg-white transition"
+          >
+            <i class="fas fa-moon"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
 
-    <!-- Font Awesome for Icons -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    <div class="container">
-        <h2>Get in Touch 📩</h2>
+    <!-- Main Content -->
+    <main
+      class="container mx-auto px-4 py-8 flex-grow flex items-center justify-center"
+    >
+      <div class="container-box max-w-md p-8 text-center">
+        <h2
+          class="text-3xl font-bold mb-6 text-[var(--light-primary)] dark:text-[var(--dark-primary)]"
+        >
+          Get in Touch 📩
+        </h2>
         <ul class="contact-info">
-            <li>📧 <i class="fas fa-envelope icon"></i> <a href="mailto:tejanadella2828@gmail.com">tejanadella2828@gmail.com</a></li>
-            <li>📞 <i class="fas fa-phone icon"></i> +91 9876543210</li>
-            <li>🐱 <i class="fab fa-github icon"></i> <a href="https://github.com/tejanadella28" target="_blank">github.com/tejanadella28</a></li>
-            <li>💼 <i class="fab fa-linkedin icon"></i> <a href="https://www.linkedin.com/in/tejanadella" target="_blank">linkedin.com/in/tejanadella</a></li>
+          <li>
+            <i class="fas fa-envelope icon"></i>
+            <a href="mailto:tejanadella2828@gmail.com"
+              >tejanadella2828@gmail.com</a
+            >
+          </li>
+          <li>
+            <i class="fas fa-phone icon"></i>
+            <span>+91 9876543210</span>
+          </li>
+          <li>
+            <i class="fab fa-github icon"></i>
+            <a href="https://github.com/tejanadella28" target="_blank"
+              >github.com/tejanadella28</a
+            >
+          </li>
+          <li>
+            <i class="fab fa-linkedin icon"></i>
+            <a href="https://www.linkedin.com/in/tejanadella" target="_blank"
+              >linkedin.com/in/tejanadella</a
+            >
+          </li>
         </ul>
+        <a Gregariousbutton class="btn" href="mailto:tejanadella2828@gmail.com"
+          >Send Me an Email 🚀</a
+        >
+      </div>
+    </main>
 
-        <a href="mailto:tejanadella2828@gmail.com" class="btn">Send Me an Email 🚀</a>
-    </div>
+    <!-- Footer -->
+    <footer class="py-6 mt-auto">
+      <div class="container mx-auto px-4 text-center">
+        <p>© 2025 AI Health Center. All rights reserved.</p>
+      </div>
+    </footer>
 
-    <div class="footer">
-        &copy; 2025 Nadella Teja. All Rights Reserved. 🔥
-    </div>
-</body>
+    <!-- Scripts -->
+    <script>
+      const darkModeToggle = document.getElementById("darkModeToggle");
+      darkModeToggle.addEventListener("click", function () {
+        document.body.classList.toggle("dark-mode");
+        this.innerHTML = document.body.classList.contains("dark-mode")
+          ? '<i class="fas fa-sun"></i>'
+          : '<i class="fas fa-moon"></i>';
+      });
+    </script>
+  </body>
 </html>
