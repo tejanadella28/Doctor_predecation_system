@@ -64,7 +64,7 @@ python main.py
 ![Homepage](https://github.com/tejanadella28/Doctor_predecation_system/blob/main/Screenshot%202025-03-31%20133433.png)
 
 ### 🏥 Disease Prediction  
-![Prediction](https://github.com/tejanadella28/Doctor_predecation_system/blob/main/Screenshot%202025-03-14%20142206.png)  
+![Prediction](https://github.com/tejanadella28/Doctor_predecation_system/blob/main/Screenshot%202025-03-31%20135452.png)  
 
 ---
 
